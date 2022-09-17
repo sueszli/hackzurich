@@ -3,13 +3,10 @@
 #include <unistd.h>
 #include <string.h>
 #include "rs232.h"
+#include "server.h"
 
 const char *seps = ": ";
 char *_;
-
-void send_data(int co2, double temp, double humidity) {
-	
-}
 
 void parse_string(char *str){
 	
@@ -24,8 +21,6 @@ void parse_string(char *str){
 	// extract humidity
 	_ = strtok(NULL, seps);
 	double humidity = strtod(strtok(NULL, seps), &_);
-
-	send_data(co2, temp, humidity);
 }
 
 int main()
@@ -34,8 +29,10 @@ int main()
 	const char *mode = "8N1";
   	int bdrate = 115200;     
   	unsigned char buf[SIZE];
+	struct sockaddr_in sockaddr;
 
   	int cport_nr = RS232_GetPortnr("ttyUSB1");
+	init_server(&sockaddr);
 
   	if(RS232_OpenComport(cport_nr, bdrate, mode, 0))
     	return -1;
@@ -54,15 +51,19 @@ int main()
           		buf[i] = ' ';
 		}
 
-		if(strchr((char *)buf, ':') != NULL) {
-			parse_string((char *)buf);
-		}
-		else {
-			// handle incorrect data
-		}
+		// if(strchr((char *)buf, ':') != NULL) {
+		// 	parse_string((char *)buf);
+		// }
+		// else {
+		// 	handle incorrect data
+		// }
+
+		send_to_client(buf);
 
     	usleep(50000); 
   }
+
+  close_server();
 
   return 0;
 }
