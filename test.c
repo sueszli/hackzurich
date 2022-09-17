@@ -30,7 +30,7 @@ int main()
 	const char *mode = "8N1";
   	int bdrate = 115200;     
 
-  	cport_nr = RS232_GetPortnr("ttyUSB1");
+  	cport_nr = RS232_GetPortnr("ttyUSB1"); // UPDATE THIS EVERY TIME YOU START THE BACKEND!!
 
   	if(RS232_OpenComport(cport_nr, bdrate, mode, 0))
     	return -1;

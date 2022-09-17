@@ -22,12 +22,14 @@
         });
     }
 
-    function processData(data) {
+    function plotData(dataObj) {
+        console.log(dataObj);
+    } 
+
+    function parseData(data) {
         // sensor still processing
         if (data.includes(ERROR_MESSAGE)) return;
         
-        console.log(data);
-
         data = data.split(" ");
 
         for (let i = 0; i < data.length ; i += 5) {
@@ -37,15 +39,11 @@
                 humidity: data[i + 2].split(":")[1],
                 timestamp: new Date(),
             }
-
-            // ...
-            console.log(data)
+            plotData(data);
         }
     }
 
-    setInterval(() => fetchData(processData), REQUEST_DELAY);
-    
-    
+    setInterval(() => fetchData(parseData), REQUEST_DELAY);
 </script>
 
 </html>
