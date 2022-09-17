@@ -57,7 +57,7 @@ void setup() {
         delay(100);
     }
 
-    Wire.begin();
+    Wire.begin(4, 2); // <---- update your esp32 pin values here
 
     uint16_t error;
     char errorMessage[256];
