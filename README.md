@@ -1,4 +1,4 @@
-# README: CHack
+# CHack
 
 # 🧑‍💻 *Team members*
 
