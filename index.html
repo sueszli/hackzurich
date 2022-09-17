@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLS WORK THIS TIME</title>
+</head>
+
+<script>
+    const ERROR_MESSAGE = "NO DATA RECEIVED FROM SENSOR.";
+    const REQUEST_DELAY = 1500;
+
+    function fetchData(callback) {
+        fetch("http://localhost:8000/")
+        .then((resp) => {
+            return resp.text()
+        })
+        .then(callback)
+        .catch((err) => {
+            console.log(err);
+        });
+    }
+
+    function processData(data) {
+        // sensor still processing
+        if (data.includes(ERROR_MESSAGE)) return;
+        
+        console.log(data);
+
+        data = data.split(" ");
+
+        for (let i = 0; i < data.length ; i += 5) {
+            data = {
+                co2: data[i + 0].split(":")[1],
+                temperature: data[i + 1].split(":")[1],
+                humidity: data[i + 2].split(":")[1],
+                timestamp: new Date(),
+            }
+
+            // ...
+            console.log(data)
+        }
+    }
+
+    setInterval(() => fetchData(processData), REQUEST_DELAY);
+    
+    
+</script>
+
+</html>

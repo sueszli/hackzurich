@@ -48,7 +48,9 @@ void route() {
 	if (strcmp("/", uri) == 0 && strcmp("GET", method) == 0) {
 
 		
-  		printf("HTTP/1.1 200 OK\r\n\r\n");
+  		printf("HTTP/1.1 200 OK\r\n");
+		printf("Access-Control-Allow-Origin: *\r\n");
+		printf("Accept: text/plain\r\n\r\n");
 
 		int bytes = RS232_PollComport(cport_nr, buf, SIZE-1);
 
@@ -60,8 +62,8 @@ void route() {
 			}
 			printf("%s\n", (char *)buf);
 		}
-		else {
-			printf("no.");
+		else { 
+			printf("NO DATA RECEIVED FROM SENSOR.");
 		}
 
   		printf("\r\n\r\n");
