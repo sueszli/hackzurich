@@ -7,8 +7,8 @@
     <title>Sensirion Visualizer</title>
     <link rel="icon" type="image/png" href="./assets/favicon.png" />
 
-    <!-- visualize with https://www.chartjs.org/ -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- import canvas.js -->
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </head>
 
 <body>
@@ -17,9 +17,7 @@
     </header>
 
     <main>
-        <canvas id="temperature_chart" />
-        <canvas id="humidity_chart" />
-        <canvas id="CO2_chart" />
+        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
     </main>
 </body>
 
@@ -39,13 +37,124 @@
         font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
 
-    canvas {
+    #chartContainer {
         min-width: 30vw;
         min-height: 40vh;
     }
 </style>
 
 <script>
+
+    window.onload = function () {
+
+    var dataPoints1 = [];
+    var dataPoints2 = [];
+
+    var chart = new CanvasJS.Chart("chartContainer", {
+        zoomEnabled: true,
+        title: {
+            text: "Share Value of Two Companies"
+        },
+        axisX: {
+            title: "chart updates every 3 secs"
+        },
+        axisY:{
+            prefix: "$"
+        }, 
+        toolTip: {
+            shared: true
+        },
+        legend: {
+            cursor:"pointer",
+            verticalAlign: "top",
+            fontSize: 22,
+            fontColor: "dimGrey",
+            itemclick : toggleDataSeries
+        },
+        data: [{ 
+            type: "line",
+            xValueType: "dateTime",
+            yValueFormatString: "$####.00",
+            xValueFormatString: "hh:mm:ss TT",
+            showInLegend: true,
+            name: "Company A",
+            dataPoints: dataPoints1
+            },
+            {				
+                type: "line",
+                xValueType: "dateTime",
+                yValueFormatString: "$####.00",
+                showInLegend: true,
+                name: "Company B" ,
+                dataPoints: dataPoints2
+        }]
+    });
+
+    function toggleDataSeries(e) {
+        if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+            e.dataSeries.visible = false;
+        }
+        else {
+            e.dataSeries.visible = true;
+        }
+        chart.render();
+    }
+
+    var updateInterval = 3000;
+    // initial value
+    var yValue1 = 600; 
+    var yValue2 = 605;
+
+    var time = new Date;
+    // starting at 9.30 am
+    time.setHours(9);
+    time.setMinutes(30);
+    time.setSeconds(00);
+    time.setMilliseconds(00);
+
+    function updateChart(count) {
+        count = count || 1;
+        var deltaY1, deltaY2;
+        for (var i = 0; i < count; i++) {
+            time.setTime(time.getTime()+ updateInterval);
+            deltaY1 = .5 + Math.random() *(-.5-.5);
+            deltaY2 = .5 + Math.random() *(-.5-.5);
+
+        // adding random value and rounding it to two digits. 
+        yValue1 = Math.round((yValue1 + deltaY1)*100)/100;
+        yValue2 = Math.round((yValue2 + deltaY2)*100)/100;
+
+        // pushing the new values
+        dataPoints1.push({
+            x: time.getTime(),
+            y: yValue1
+        });
+        dataPoints2.push({
+            x: time.getTime(),
+            y: yValue2
+        });
+        }
+
+        // updating legend text with  updated with y Value 
+        chart.options.data[0].legendText = " Company A  $" + yValue1;
+        chart.options.data[1].legendText = " Company B  $" + yValue2; 
+        chart.render();
+    }
+    // generates first set of dataPoints 
+    updateChart(100);	
+    setInterval(function(){updateChart()}, updateInterval);
+
+    }
+
+
+
+
+
+
+
+
+
+
     const timestampArr = [];
     const temperatureArr = [];
     const humidityArr = [];
@@ -60,7 +169,7 @@
     //    co2Arr.push(data.co2);
     // }
     
-    function updateCanvas() {
+    function updateChart() {
         // update timestamp
         timestampArr.push(new Date());
         
@@ -73,40 +182,9 @@
         humidityArr.push(Math.random() * 50);
         co2Arr.push(Math.random() * 100);
 
-        updateCanvas();
+        updateChart();
     }
     setInterval(mockData, 1000);
-
-    const labels = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-    ];
-
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: 'Temperature',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 15, 30, 45],
-        }],
-    };
-
-    const config = {
-        type: 'line',
-        data: data,
-        options: {}
-    };
-
-    const chart = new Chart(
-        document.getElementById('temperature_chart'),
-        config
-    );
-
 </script>
 
 </html>
