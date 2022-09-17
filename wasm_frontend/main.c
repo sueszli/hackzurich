@@ -63,18 +63,23 @@ int main(int argc, char** argv) {
 //   EM_ASM("SDL.defaults.copyOnLock = false; SDL.defaults.discardOnLock = true; SDL.defaults.opaqueFrontBuffer = false;");
 // #endif
 
-  if (SDL_MUSTLOCK(screen)) SDL_LockSurface(screen);
+  SDL_TimerID timer = SDL_AddTimer(1500, )
 
-  fill(screen);
+  SDL_Quit();
+  return 0;
+}
+
+void render(SDL_Surface *screen) {
+    if (SDL_MUSTLOCK(*screen)) SDL_LockSurface(*screen);
+
+  fill(*screen);
 
   double value = 0.0;
   for (int i = 0; i < 200; i++) {
-    plotDataPoint(screen, value);
+    plotDataPoint(*screen, value);
     value += sampleNormal();
   }
 
-  if (SDL_MUSTLOCK(screen)) SDL_UnlockSurface(screen);
-  SDL_Flip(screen); 
-  SDL_Quit();
-  return 0;
+  if (SDL_MUSTLOCK(*screen)) SDL_UnlockSurface(*screen);
+  SDL_Flip(*screen); 
 }

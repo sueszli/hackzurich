@@ -12,7 +12,9 @@ Fred / @FredW
 
 Yahya / @sueszli
 
-# 📃 *Tasks, Project Idea*
+<br><br><br>
+
+# 📃 *Project Idea*
 
 **Repository**
 
@@ -25,6 +27,8 @@ Reading data in real time with a sensor from “Sensirion” by implementing a s
 This way we should have high accessibility and performance at once.
 
 ![Untitled](./readme_assets/Untitled.png)
+
+<br><br><br>
 
 # 👀 *References*
 
@@ -62,6 +66,8 @@ This way we should have high accessibility and performance at once.
 **Sensirion Github respository**
 
 [https://github.com/Sensirion](https://github.com/Sensirion)
+
+<br><br><br>
 
 # 🔧 *Preparing the Hardware*
 
@@ -148,3 +154,13 @@ Windows
 - [https://github.com/wjwwood/serial](https://github.com/wjwwood/serial)
 - [https://gitlab.com/Teuniz/RS-232](https://gitlab.com/Teuniz/RS-232)
 - [https://sigrok.org/wiki/Libserialport](https://sigrok.org/wiki/Libserialport)
+
+<br><br><br>
+
+# 🔧 *Running the Software*
+
+0. Attach the ESP23 microcontroller and the sensor to your Linux PC (not Windows or MacOs, also WSL doesn't work).
+1. You may need to update the path to your device in `backend/main.c`.
+2. In the `backend` directory run the `build.sh` script and then execute the `main` executable to run the backend.
+3. Then open up the `js_frontend/index.html` file.
+4. Enjoy the sweet real time visualization.
