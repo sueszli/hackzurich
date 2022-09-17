@@ -24,7 +24,7 @@ Reading data in real time with a sensor from “Sensirion” by implementing a s
 
 This way we should have high accessibility and performance at once.
 
-![Untitled](readme_assets/Untitled.png)
+![Untitled](./readme_assets/Untitled.png)
 
 # 👀 *References*
 
@@ -72,7 +72,7 @@ This way we should have high accessibility and performance at once.
 1. Download the “Arduino IDE” for your operating system
 2. Install the library (must be from Sensirion)
     
-    ![Untitled](readme_assets/Untitled%201.png)
+    ![Untitled](./readme_assets/Untitled%201.png)
     
 3. Install a new board
     
@@ -81,7 +81,7 @@ This way we should have high accessibility and performance at once.
 4. once you have that installed, you can select the ESP32 Dev Module under `Tools > Board > esp32 > ...`
 5. Select the right board and port
     
-    ![Untitled](readme_assets/Untitled%202.png)
+    ![Untitled](./readme_assets/Untitled%202.png)
     
 6. Load a demo file to test it out
     
@@ -90,7 +90,7 @@ This way we should have high accessibility and performance at once.
 
 4. Press the arrow to flash
 
-![Untitled](readme_assets/Untitled%203.png)
+![Untitled](./readme_assets/Untitled%203.png)
 
 As soon as you establish a connection, hold the boot button, then press the reset button once.
 
@@ -106,7 +106,7 @@ Official tutorials:
 
 1. Connect ground and power pins from sensor to esp32
     
-    ![Untitled](readme_assets/Untitled%204.png)
+    ![Untitled](./readme_assets/Untitled%204.png)
     
 2. Connect the other cables to any pin you want
     
