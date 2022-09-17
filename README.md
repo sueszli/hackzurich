@@ -14,11 +14,11 @@ Yahya / @sueszli
 
 # 📃 *Tasks, Project Idea*
 
-Repository
+**Repository**
 
 [https://github.com/sueszli/CHack](https://github.com/sueszli/CHack)
 
-Project Idea
+**Project Idea**
 
 Reading data in real time with a sensor from “Sensirion” by implementing a serial monitor in C - then passing our data to the frontend through a TCP connection.
 
@@ -28,15 +28,15 @@ This way we should have high accessibility and performance at once.
 
 # 👀 *References*
 
-C syntax
+**C syntax**
 
 [https://learnxinyminutes.com/docs/c/](https://learnxinyminutes.com/docs/c/)
 
-WASM docs
+**WASM docs**
 
 [https://developer.mozilla.org/en-US/docs/WebAssembly/Concepts](https://developer.mozilla.org/en-US/docs/WebAssembly/Concepts)
 
-Emscripten (compiling C → WASM)
+**Emscripten (compiling C → WASM)**
 
 [https://wasmbyexample.dev/examples/hello-world/hello-world.c.en-us.html](https://wasmbyexample.dev/examples/hello-world/hello-world.c.en-us.html)
 
@@ -53,13 +53,13 @@ Emscripten (compiling C → WASM)
 [https://marcoselvatici.github.io/WASM_tutorial/](https://marcoselvatici.github.io/WASM_tutorial/)
 
 (github pages script: [https://github.com/ulazy1/emscripten-test-proj](https://github.com/ulazy1/emscripten-test-proj))
-    
 
-Libraries for portability
+
+**Library for portability**
 
 [https://justine.lol/cosmopolitan/](https://justine.lol/cosmopolitan/)
 
-Sensirion Github respository
+**Sensirion Github respository**
 
 [https://github.com/Sensirion](https://github.com/Sensirion)
 
@@ -67,7 +67,7 @@ Sensirion Github respository
 
 ## *1) Flashing the ESP32*
 
-Setting up the IDE
+**Setting up the IDE**
 
 1. Download the “Arduino IDE” for your operating system
 2. Install the library (must be from Sensirion)
@@ -94,7 +94,7 @@ Setting up the IDE
 
 As soon as you establish a connection, hold the boot button, then press the reset button once.
 
-Connecting the sensor to the esp32
+**Connecting the sensor to the esp32**
 
 Official tutorials:
 
@@ -115,7 +115,7 @@ Official tutorials:
     Yellow cable = SCL → pin 2
     
 
-Connecting to the esp32 after the sensors were connected to it
+**Connecting to the esp32 after the sensors were connected to it**
 
 1. Choose `File > Examples  > Sensirion I2C SCD4x > exampleUsage`.
 2. Add `Wire.begin(4, 2);` after the `while (!Serial)` loop.
@@ -125,7 +125,7 @@ As soon as you establish a connection, hold the boot button, then press the rese
 
 ## *2) Establishing a serial connection and reading the live data stream*
 
-Using terminal tools
+**Using terminal tools**
 
 MacOS
 
@@ -139,7 +139,7 @@ Windows
 
 [https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/establish-serial-connection.html#check-port-on-linux-and-macos](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/establish-serial-connection.html#check-port-on-linux-and-macos)
 
-Using a C library
+**Using a C library**
 
 - [https://sigrok.org/wiki/Libserialport](https://sigrok.org/wiki/Libserialport)
     
