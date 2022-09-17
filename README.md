@@ -53,53 +53,9 @@ Emscripten (compiling C → WASM)
 [https://marcoselvatici.github.io/WASM_tutorial/](https://marcoselvatici.github.io/WASM_tutorial/)
 
 (github pages script: [https://github.com/ulazy1/emscripten-test-proj](https://github.com/ulazy1/emscripten-test-proj))
-
-- Other options
-    
-    Cheerp
-    
-    [https://github.com/leaningtech/cheerp-meta](https://github.com/leaningtech/cheerp-meta)
-    
-    ~~Wasm fiddle~~ (it’s a browser tool)
-    
-    [https://wasdk.github.io/WasmFiddle/](https://wasdk.github.io/WasmFiddle/)
-    
-    ~~Wasm fiddle plus plus~~ (it’s a browser tool)
-    
-    [https://anonyco.github.io/WasmFiddlePlusPlus/](https://anonyco.github.io/WasmFiddlePlusPlus/)
-    
-    ~~Wasm explorer~~
-    
-    [https://mbebenita.github.io/WasmExplorer/](https://mbebenita.github.io/WasmExplorer/)
-    
-    ~~Wasmer~~ (horseshit documentation)
-    
-    [https://wasmer.io/](https://wasmer.io/)
-    
-    ~~Wasi / Clang / LLVM~~ (pretty difficult to use)
-    
-    [https://github.com/WebAssembly/wasi-sdk](https://github.com/WebAssembly/wasi-sdk)
-    
-    [https://00f.net/2019/04/07/compiling-to-webassembly-with-llvm-and-clang/](https://00f.net/2019/04/07/compiling-to-webassembly-with-llvm-and-clang/)
-    
-    [https://surma.dev/things/c-to-webassembly/](https://surma.dev/things/c-to-webassembly/)
-    
-    [https://web.dev/emscripting-a-c-library/](https://web.dev/emscripting-a-c-library/)
-    
-    [https://gist.github.com/yurydelendik/4eeff8248aeb14ce763e](https://gist.github.com/yurydelendik/4eeff8248aeb14ce763e)
-    
-    ~~Wasmtime~~ (not suitable for C - rather rust)
-    
-    [https://wasmtime.dev/](https://wasmtime.dev/)
-    
-    [https://docs.wasmtime.dev/c-api/](https://docs.wasmtime.dev/c-api/)
-    
-    ~~wasienv~~ (they say that emscripten is better lol)
-    
-    [https://github.com/wasienv/wasienv#commands](https://github.com/wasienv/wasienv#commands)
     
 
-Library for portability
+Libraries for portability
 
 [https://justine.lol/cosmopolitan/](https://justine.lol/cosmopolitan/)
 
