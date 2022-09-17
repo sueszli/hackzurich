@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sensirion Visualizer</title>
     <link rel="icon" type="image/png" href="./assets/favicon.png" />
+
+    <!-- visualize with https://www.chartjs.org/ -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -14,24 +17,36 @@
     </header>
 
     <main>
-        insert epic chart here
+        <canvas id="temperature_chart" />
+        <canvas id="humidity_chart" />
+        <canvas id="CO2_chart" />
     </main>
 </body>
 
 <style>
-    /* center container */
     body {
         margin: 0;
-        padding: 0;
-        font-family: sans-serif;
-
+        padding: 0;        
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-items: center;
+    }
+    
+    header {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    canvas {
+        min-width: 30vw;
+        min-height: 40vh;
     }
 </style>
 
 <script>
+    const timestampArr = [];
     const temperatureArr = [];
     const humidityArr = [];
     const co2Arr = [];
@@ -45,8 +60,10 @@
     //    co2Arr.push(data.co2);
     // }
     
-    // visualize with https://www.chartjs.org/
     function updateCanvas() {
+        // update timestamp
+        timestampArr.push(new Date());
+        
         console.log("Data got updated!");
     }
     
@@ -59,6 +76,37 @@
         updateCanvas();
     }
     setInterval(mockData, 1000);
+
+    const labels = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+    ];
+
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'Temperature',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 15, 30, 45],
+        }],
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {}
+    };
+
+    const chart = new Chart(
+        document.getElementById('temperature_chart'),
+        config
+    );
+
 </script>
 
 </html>
