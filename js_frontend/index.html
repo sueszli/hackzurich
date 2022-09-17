@@ -39,24 +39,62 @@
         font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
 
-    #chartContainer {
+    main div {
+        margin-bottom: 4rem;
         min-width: 60vw;
-        min-height: 50vh;
+        min-height: 60vh;
     }
 </style>
 
-<script>
-    window.onload = function() {
 
-        const temperatureData = [];
-        const humidityData = [];
-        const co2Data = [];
+<script defer>
+    const ERROR_MESSAGE = "NO DATA RECEIVED FROM SENSOR.";
+    const REQUEST_DELAY = 1500;
 
-        let chart = new CanvasJS.Chart("temperature-chart-container", {
+    function fetchData(callback) {
+        fetch("http://localhost:8000/")
+        .then((resp) => {
+            return resp.text()
+        })
+        .then(callback)
+        .catch((err) => {
+            console.log(err);
+        });
+    }
+
+    function parseData(data) {
+        // sensor still processing
+        if (data.includes(ERROR_MESSAGE)) return;
+        
+        data = data.split(" ");
+
+        for (let i = 0; i < data.length ; i += 5) {
+            data = {
+                co2: parseInt(data[i + 0].split(":")[1], 10),
+                temperature: parseFloat(data[i + 1].split(":")[1]),
+                humidity: parseFloat(data[i + 2].split(":")[1]),
+                timestamp: new Date(),
+            }
+            plotData(data);
+        }
+    }
+
+    // buffer for graph
+    const TEMPERATURE_ARRAY = [];
+    const HUMIDITY_ARRAY = [];
+    const CO2_ARRAY = [];
+
+    function toggleDataSeries(e) {
+        if (!e.dataSeries.visible || e.dataSeries.visible) {
+            e.dataSeries.visible = false;
+        } else {
+            e.dataSeries.visible = true;
+        }
+    }
+
+    function renderTemperature() {
+        new CanvasJS.Chart("temperature-chart-container", {
             zoomEnabled: true,
-            axisY:{
-                prefix: "$"
-            }, 
             toolTip: {
                 shared: true
             },
@@ -73,114 +111,87 @@
                 yValueFormatString: "$####.00",
                 xValueFormatString: "hh:mm:ss TT",
                 showInLegend: true,
-                name: "Company A",
-                dataPoints: humidityData
-                },
-                {				
-                    type: "line",
-                    xValueType: "dateTime",
-                    yValueFormatString: "$####.00",
-                    showInLegend: true,
-                    name: "Company B" ,
-                    dataPoints: temperatureData
-            }]
+                name: "Temperature",
+                dataPoints: TEMPERATURE_ARRAY
+                }]
+        })
+        .render();
+    }
+
+    function renderHumidity() {
+        new CanvasJS.Chart("humidity-chart-container", {
+            zoomEnabled: true,
+            toolTip: {
+                shared: true
+            },
+            legend: {
+                cursor:"pointer",
+                verticalAlign: "top",
+                fontSize: 22,
+                fontColor: "dimGrey",
+                itemclick : toggleDataSeries
+            },
+            data: [{ 
+                type: "line",
+                xValueType: "dateTime",
+                yValueFormatString: "$####.00",
+                xValueFormatString: "hh:mm:ss TT",
+                showInLegend: true,
+                name: "Humidity",
+                dataPoints: HUMIDITY_ARRAY
+                }]
+        })
+        .render();
+    }
+
+    function renderCo2() {
+        new CanvasJS.Chart("co2-chart-container", {
+            zoomEnabled: true,
+            toolTip: {
+                shared: true
+            },
+            legend: {
+                cursor:"pointer",
+                verticalAlign: "top",
+                fontSize: 22,
+                fontColor: "dimGrey",
+                itemclick : toggleDataSeries
+            },
+            data: [{ 
+                type: "line",
+                xValueType: "dateTime",
+                yValueFormatString: "$####.00",
+                xValueFormatString: "hh:mm:ss TT",
+                showInLegend: true,
+                name: "CO2",
+                dataPoints: CO2_ARRAY
+                }]
+        })
+        .render();
+    }
+
+    function plotData(dataObj) {
+        console.log("Fetched data:", dataObj);
+
+        TEMPERATURE_ARRAY.push({
+            x: dataObj.timestamp,
+            y: dataObj.temperature
         });
+        renderTemperature();
 
-        function toggleDataSeries(e) {
-            if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-                e.dataSeries.visible = false;
-            }
-            else {
-                e.dataSeries.visible = true;
-            }
-            chart.render();
-        }
+        HUMIDITY_ARRAY.push({
+            x: dataObj.timestamp,
+            y: dataObj.humidity
+        });
+        renderHumidity();
 
-        let updateInterval = 3000;
-        // initial value
-        let yValue1 = 600; 
-        let yValue2 = 605;
-
-        let time = new Date;
-        // starting at 9.30 am
-        time.setHours(9);
-        time.setMinutes(30);
-        time.setSeconds(00);
-        time.setMilliseconds(00);
-
-        function updateChart(count) {
-            count = count || 1;
-            let deltaY1, deltaY2;
-            for (let i = 0; i < count; i++) {
-                time.setTime(time.getTime()+ updateInterval);
-                deltaY1 = .5 + Math.random() *(-.5-.5);
-                deltaY2 = .5 + Math.random() *(-.5-.5);
-
-            // adding random value and rounding it to two digits. 
-            yValue1 = Math.round((yValue1 + deltaY1)*100)/100;
-            yValue2 = Math.round((yValue2 + deltaY2)*100)/100;
-
-            // pushing the new values
-            humidityData.push({
-                x: time.getTime(),
-                y: yValue1
-            });
-            temperatureData.push({
-                x: time.getTime(),
-                y: yValue2
-            });
-            }
-
-            // updating legend text with  updated with y Value 
-            chart.options.data[0].legendText = " Company A  $" + yValue1;
-            chart.options.data[1].legendText = " Company B  $" + yValue2; 
-            chart.render();
-        }
-
-        // generates first set of dataPoints 
-        updateChart(100);	
-        setInterval(function(){updateChart()}, updateInterval);
+        CO2_ARRAY.push({
+            x: dataObj.timestamp,
+            y: dataObj.co2
+        });
+        renderCo2();
     }
 
-
-
-
-
-
-
-
-
-
-    const timestampArr = [];
-    const temperatureArr = [];
-    const humidityArr = [];
-    const co2Arr = [];
-
-    // create tcp connection to update data array
-    // const socket = new WebSocket('ws://localhost:8080');
-    // socket.onmessage = (event) => {
-    //    const data = JSON.parse(event.data);
-    //    temperatureArr.push(data.temperature);
-    //    humidityArr.push(data.humidity);
-    //    co2Arr.push(data.co2);
-    // }
-    
-    function updateChart() {
-        // update timestamp
-        timestampArr.push(new Date());
-        
-        console.log("Data got updated!");
-    }
-    
-    // add mockData every second
-    function mockData() {
-        temperatureArr.push(Math.random() * 40);
-        humidityArr.push(Math.random() * 50);
-        co2Arr.push(Math.random() * 100);
-
-        updateChart();
-    }
-    setInterval(mockData, 1000);
+    setInterval(() => fetchData(parseData), REQUEST_DELAY);
 </script>
-
 </html>
