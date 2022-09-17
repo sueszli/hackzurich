@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensirion Visualizer</title>
+</head>
+<body>
+    
+</body>
+
+
+<script>
+    const temperatureArr = [];
+    const humidityArr = [];
+    const co2Arr = [];
+
+    // create tcp connection to update data array
+    // const socket = new WebSocket('ws://localhost:8080');
+    // socket.onmessage = (event) => {
+    //    const data = JSON.parse(event.data);
+    //    temperatureArr.push(data.temperature);
+    //    humidityArr.push(data.humidity);
+    //    co2Arr.push(data.co2);
+    // }
+    
+    // visualize with https://www.chartjs.org/
+    function updateCanvas() {
+        console.log("Data got updated!");
+    }
+    
+    // add mockData every second
+    function mockData() {
+        temperatureArr.push(Math.random() * 40);
+        humidityArr.push(Math.random() * 50);
+        co2Arr.push(Math.random() * 100);
+
+        updateCanvas();
+    }
+    setInterval(mockData, 1000);
+
+
+</script>
+</html>
