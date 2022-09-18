@@ -24,7 +24,7 @@ This way we should have high accessibility and performance, all at once.
 4. once you have that installed, you can select the ESP32 Dev Module under `Tools > Board > esp32 > ...`
 5. Select the right board and port
     
-    <img src="./readme_assets/Untitled%202.png" width="250">
+    <img src="./readme_assets/Untitled%202.png" width="300">
     
 6. Load a demo file to test it out
     
@@ -33,7 +33,7 @@ This way we should have high accessibility and performance, all at once.
 
 4. Press the arrow to flash
 
-    <img src="./readme_assets/Untitled%203.png" width="100">
+    <img src="./readme_assets/Untitled%203.png" width="50">
 
 As soon as you establish a connection, hold the boot button, then press the reset button once.
 
