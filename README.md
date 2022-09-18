@@ -37,7 +37,7 @@ As soon as you establish a connection, hold the boot button, then press the rese
 
 <br><br>
 
-### Connecting the sensor to the esp32
+### Connecting the sensor to the ESP32
 
 Official tutorials:
 
