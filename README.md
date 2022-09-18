@@ -1,6 +1,5 @@
 # cHack
-Reading data in real time with a sensor from “Sensirion” by implementing a serial monitor and backend in C.
-This way we should have high accessibility and performance, all at once.
+A lightweight script to read and visualize data in real time from a CO2 sensor / esp32 microcontroller.
 
 ![Untitled](./readme_assets/Untitled.png)
 
@@ -8,12 +7,12 @@ This way we should have high accessibility and performance, all at once.
 
 # 🔧 *Preparing the Hardware*
 
-## *1) Flashing the ESP32*
+## *1) Flashing the ESP32 microcontroller*
 
 ### Setting up the IDE
 
 1. Download the “Arduino IDE” for your operating system
-2. Install the library (must be from Sensirion)
+2. Install the library (must be from Sensirion, because we are using their sensor)
     
     <img src="./readme_assets/Untitled%201.png" width="200">
     
@@ -21,7 +20,7 @@ This way we should have high accessibility and performance, all at once.
     
     [https://www.electroniclinic.com/esp32-arduino-ide-board-manager-installation-espressif-esp32-wroom/#ESP32_Arduino_IDE_Board_Manager_URL_link](https://www.electroniclinic.com/esp32-arduino-ide-board-manager-installation-espressif-esp32-wroom/#ESP32_Arduino_IDE_Board_Manager_URL_link)
     
-4. once you have that installed, you can select the ESP32 Dev Module under `Tools > Board > esp32 > ...`
+4. once you have that installed, you can select the "ESP32 Dev Module" under `Tools > Board > esp32 > ...`
 5. Select the right board and port
     
     <img src="./readme_assets/Untitled%202.png" width="300">
@@ -30,12 +29,13 @@ This way we should have high accessibility and performance, all at once.
     
     `File > Examples > 01. Basics > BareMinumum`
     
-
 4. Press the arrow to flash
 
     <img src="./readme_assets/Untitled%203.png" width="50">
 
 As soon as you establish a connection, hold the boot button, then press the reset button once.
+
+<br><br>
 
 ### Connecting the sensor to the esp32
 
@@ -45,11 +45,9 @@ Official tutorials:
 
 - [https://github.com/Sensirion/arduino-i2c-scd4x/blob/master/README.md](https://github.com/Sensirion/arduino-i2c-scd4x/blob/master/README.md)
 
-<br>
+Unofficial tutorial:
 
-Inofficial tutorial:
-
-1. Connect ground and power pins from sensor to esp32
+1. Connect ground and power pins from sensor to the ESP32
     
     <img src="./readme_assets/Untitled%204.png" width="200">
     
@@ -59,13 +57,17 @@ Inofficial tutorial:
     
     Yellow cable = SCL (in our case: pin 2)
 
-### Connecting to the esp32 after the sensors were connected to it
+<br><br>
+
+### Connecting to the ESP32 from your PC after the sensor was connected to it
 
 1. Choose `File > Examples  > Sensirion I2C SCD4x > exampleUsage`.
 2. Add `Wire.begin(4, 2);` after the `while (!Serial)` loop.
 3. Press the arrow in the top left corner to Upload.
 
 As soon as you establish a connection, hold the boot button, then press the reset button once - voila!
+
+<br><br>
 
 ## *2) Establishing a serial connection and reading the live data stream*
 
@@ -83,7 +85,7 @@ Windows
 
 - [https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/establish-serial-connection.html#check-port-on-linux-and-macos](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/establish-serial-connection.html#check-port-on-linux-and-macos)
 
-### Using a C library
+### Using a lightweight C library
 - [https://gitlab.com/Teuniz/RS-232](https://gitlab.com/Teuniz/RS-232)
 
 
