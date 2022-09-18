@@ -1,5 +1,5 @@
 # cHack
-A lightweight script to read and visualize data in real time from a CO2 sensor / esp32 microcontroller.
+A really lightweight script to read and visualize data in real time from a CO2 sensor / esp32 microcontroller.
 
 ![Untitled](./readme_assets/Untitled.png)
 
