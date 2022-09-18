@@ -6,8 +6,6 @@ Mateusz / @marzipan
 
 Witold / @wdrz
 
-Utkarsh / @UTKARSH MISHRA
-
 Fred / @FredW
 
 Yahya / @sueszli
