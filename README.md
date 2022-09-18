@@ -107,9 +107,9 @@ Official tutorials:
     
 2. Connect the other cables to any pin you want
     
-    Green cable = SDA → pin 4
+    Green cable = SDA (in our case: pin 4)
     
-    Yellow cable = SCL → pin 2
+    Yellow cable = SCL (in our case: pin 2)
 
 ### Connecting to the esp32 after the sensors were connected to it
 
