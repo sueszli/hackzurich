@@ -71,21 +71,11 @@ As soon as you establish a connection, hold the boot button, then press the rese
 
 ## *2) Establishing a serial connection and reading the live data stream*
 
-### Using terminal tools
-
-MacOS
+**Using terminal based tools:**
 
 - [https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/establish-serial-connection.html#check-port-on-linux-and-macos](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/establish-serial-connection.html#check-port-on-linux-and-macos)
 
-Linux
-
-- [https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/establish-serial-connection.html#check-port-on-linux-and-macos](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/establish-serial-connection.html#check-port-on-linux-and-macos)
-
-Windows
-
-- [https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/establish-serial-connection.html#check-port-on-linux-and-macos](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/establish-serial-connection.html#check-port-on-linux-and-macos)
-
-### Using a lightweight C library
+**Using a lightweight C library:**
 - [https://gitlab.com/Teuniz/RS-232](https://gitlab.com/Teuniz/RS-232)
 
 
@@ -93,7 +83,7 @@ Windows
 
 # 🔧 *Running the Software*
 
-0. Attach the ESP23 microcontroller and the sensor to your Linux PC (not Windows or MacOs, also WSL doesn't work).
+0. Attach the ESP23 microcontroller and the sensor to your Linux PC (not Windows or MacOs, also WSL doesn't work because peripherals from the `/dev` path don't get emulated correctly).
 1. You may need to update the path to your device in `backend/main.c`.
 2. In the `backend` directory run the `build.sh` script and then execute the `main` executable to run the backend.
 3. Then open up the `js_frontend/index.html` file.
