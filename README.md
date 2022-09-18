@@ -1,4 +1,4 @@
-# CHack
+# cHack
 
 # 🧑‍💻 *Team members*
 
@@ -64,7 +64,7 @@ This way we should have high accessibility and performance, all at once.
 
 ## *1) Flashing the ESP32*
 
-**Setting up the IDE**
+### Setting up the IDE
 
 1. Download the “Arduino IDE” for your operating system
 2. Install the library (must be from Sensirion)
@@ -91,7 +91,7 @@ This way we should have high accessibility and performance, all at once.
 
 As soon as you establish a connection, hold the boot button, then press the reset button once.
 
-**Connecting the sensor to the esp32**
+### Connecting the sensor to the esp32
 
 Official tutorials:
 
@@ -110,9 +110,8 @@ Official tutorials:
     Green cable = SDA → pin 4
     
     Yellow cable = SCL → pin 2
-    
 
-**Connecting to the esp32 after the sensors were connected to it**
+### Connecting to the esp32 after the sensors were connected to it
 
 1. Choose `File > Examples  > Sensirion I2C SCD4x > exampleUsage`.
 2. Add `Wire.begin(4, 2);` after the `while (!Serial)` loop.
@@ -122,7 +121,7 @@ As soon as you establish a connection, hold the boot button, then press the rese
 
 ## *2) Establishing a serial connection and reading the live data stream*
 
-**Using terminal tools**
+### Using terminal tools
 
 MacOS
 
@@ -136,7 +135,7 @@ Windows
 
 - [https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/establish-serial-connection.html#check-port-on-linux-and-macos](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/establish-serial-connection.html#check-port-on-linux-and-macos)
 
-**Using a C library**
+### Using a C library
 
 - [https://sigrok.org/wiki/Libserialport](https://sigrok.org/wiki/Libserialport)
     
@@ -145,6 +144,7 @@ Windows
 - [https://github.com/wjwwood/serial](https://github.com/wjwwood/serial)
 - [https://gitlab.com/Teuniz/RS-232](https://gitlab.com/Teuniz/RS-232)
 - [https://sigrok.org/wiki/Libserialport](https://sigrok.org/wiki/Libserialport)
+
 
 <br><br><br>
 
