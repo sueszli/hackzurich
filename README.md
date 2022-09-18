@@ -16,12 +16,6 @@ Yahya / @sueszli
 
 # 📃 *Project Idea*
 
-**Repository**
-
-[https://github.com/sueszli/CHack](https://github.com/sueszli/CHack)
-
-**Project Idea**
-
 Reading data in real time with a sensor from “Sensirion” by implementing a serial monitor in C - then passing our data to the frontend through a TCP connection.
 
 This way we should have high accessibility and performance at once.
