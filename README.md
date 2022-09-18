@@ -99,7 +99,9 @@ Official tutorials:
 
 - [https://github.com/Sensirion/arduino-i2c-scd4x/blob/master/README.md](https://github.com/Sensirion/arduino-i2c-scd4x/blob/master/README.md)
 
----
+<br>
+
+Inofficial tutorial:
 
 1. Connect ground and power pins from sensor to esp32
     
