@@ -4,7 +4,7 @@ Visualize data in real time from your Sensirion CO2 sensor!
 
 <br><br><br>
 
-## 🔧 *Preparing the Hardware*
+## 🔧 Preparing the Hardware
 
 ### *1) Flashing the ESP32 microcontroller*
 
@@ -68,7 +68,7 @@ As soon as you establish a connection, hold the boot button, then press the rese
 
 <br><br>
 
-### *2) Establishing a serial connection and reading the live data stream*
+### 2) Establishing a serial connection and reading the live data stream
 
 Using terminal based tools:
 
