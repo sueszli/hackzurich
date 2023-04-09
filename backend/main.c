@@ -11,29 +11,24 @@ int cport_nr;
 const int SIZE = 512;
 
 void parse_string(char *str){
-	
-	// extract CO2 levels
 	_ = strtok(str, seps);
 	int co2 = atoi(strtok(NULL, seps));
 
-	// extract temperature
 	_  = strtok(NULL, seps);
 	double temp = strtod(strtok(NULL, seps), &_);
 
-	// extract humidity
 	_ = strtok(NULL, seps);
 	double humidity = strtod(strtok(NULL, seps), &_);
 }
 
-int main()
-{
+int main() {
 	const char *mode = "8N1";
   	int bdrate = 115200;     
-
-  	cport_nr = RS232_GetPortnr("ttyUSB0"); // UPDATE THIS EVERY TIME YOU START THE BACKEND!!
-
-  	if(RS232_OpenComport(cport_nr, bdrate, mode, 0))
+  	cport_nr = RS232_GetPortnr("ttyUSB0"); // <-- UPDATE EVERY TIME YOU START THE BACKEND !
+  	
+	if(RS232_OpenComport(cport_nr, bdrate, mode, 0)) {
     	return -1;
+	}
 
 	serve_forever("8000");
   	return 0;
@@ -47,7 +42,6 @@ void route() {
 
 	if (strcmp("/", uri) == 0 && strcmp("GET", method) == 0) {
 
-		
   		printf("HTTP/1.1 200 OK\r\n");
 		printf("Access-Control-Allow-Origin: *\r\n");
 		printf("Accept: text/plain\r\n\r\n");
@@ -61,13 +55,10 @@ void route() {
         	  		buf[i] = ' ';
 			}
 			printf("%s\n", (char *)buf);
-		}
-		else { 
+		} else { 
 			printf("NO DATA RECEIVED FROM SENSOR.");
 		}
-
   		printf("\r\n\r\n");
-
 
 	} else {
 		printf(\

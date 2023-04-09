@@ -1,15 +1,14 @@
-# cHack
-A really lightweight script to read and visualize data in real time from a CO2 sensor / esp32 microcontroller.
-
 ![Untitled](./readme_assets/Untitled.png)
+
+Visualize data in real time from your Sensirion CO2 sensor!
 
 <br><br><br>
 
-# 🔧 *Preparing the Hardware*
+## 🔧 *Preparing the Hardware*
 
-## *1) Flashing the ESP32 microcontroller*
+### *1) Flashing the ESP32 microcontroller*
 
-### Setting up the IDE
+#### Setting up the IDE
 
 1. Download the “Arduino IDE” for your operating system
 2. Install the library (must be from Sensirion, because we are using their sensor)
@@ -37,7 +36,7 @@ As soon as you establish a connection, hold the boot button, then press the rese
 
 <br><br>
 
-### Connecting the sensor to the ESP32
+#### Connecting the sensor to the ESP32
 
 Official tutorials:
 
@@ -59,7 +58,7 @@ Unofficial tutorial:
 
 <br><br>
 
-### Connecting to the ESP32 from your PC after the sensor was connected to it
+#### Connecting to the ESP32 from your PC after the sensor was connected to it
 
 1. Choose `File > Examples  > Sensirion I2C SCD4x > exampleUsage`.
 2. Add `Wire.begin(4, 2);` after the `while (!Serial)` loop.
@@ -69,7 +68,7 @@ As soon as you establish a connection, hold the boot button, then press the rese
 
 <br><br>
 
-## *2) Establishing a serial connection and reading the live data stream*
+### *2) Establishing a serial connection and reading the live data stream*
 
 Using terminal based tools:
 
@@ -81,7 +80,7 @@ Using a lightweight C library:
 
 <br><br><br>
 
-# 🔧 *Running the Software*
+## 🔧 *Running the Software*
 
 0. Attach the ESP23 microcontroller and the sensor to your Linux PC (not Windows or MacOs, also Windows-WSL doesn't work because peripherals from the `/dev` path don't get emulated correctly).
 1. You may need to update the path to your device in `backend/main.c`.
