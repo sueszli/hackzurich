@@ -2,7 +2,7 @@
 
 Visualize data in real time from your Sensirion CO2 sensor!
 
-<br><br><br>
+<br><br><br><br><br>
 
 ## 🔧 Preparing the Hardware
 
@@ -78,9 +78,9 @@ Using a lightweight C library:
 - [https://gitlab.com/Teuniz/RS-232](https://gitlab.com/Teuniz/RS-232)
 
 
-<br><br><br>
+<br><br><br><br><br>
 
-## 🔧 *Running the Software*
+## 🔧 Running the Software
 
 0. Attach the ESP23 microcontroller and the sensor to your Linux PC (not Windows or MacOs, also Windows-WSL doesn't work because peripherals from the `/dev` path don't get emulated correctly).
 1. You may need to update the path to your device in `backend/main.c`.
