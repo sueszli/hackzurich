@@ -2,8 +2,6 @@
 
 Visualize data in real time from your Sensirion CO2 sensor!
 
-<br><br><br>
-
 ## 🔧 Preparing the Hardware
 
 1. Download the “Arduino IDE”
@@ -36,9 +34,6 @@ Visualize data in real time from your Sensirion CO2 sensor!
     iv. - As soon as you establish a connection, hold the boot button, then press the reset button once - voila!
 
 7. Establish a serial connection and read the live data stream [using terminal based tools](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/establish-serial-connection.html#check-port-on-linux-and-macos) or [a lightweight C library](https://gitlab.com/Teuniz/RS-232).
-
-
-<br><br><br>
 
 ## 🔧 Running the Software
 
